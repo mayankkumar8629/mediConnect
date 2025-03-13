@@ -118,7 +118,12 @@ app.post("/newhospital", async (req, res) => {
 app.get("/hospitals/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    const hospital = await Hospital.findById(id).populate("doctors");
+    const hospital = await Hospital.findById(id)
+    .populate("doctors")
+    .populate({
+      path:"reviews",
+      populate:{path:"user",select:"name email"}
+    });
     if (!hospital) {
       return res.status(404).json({ message: "Hospital not found" });
     }
