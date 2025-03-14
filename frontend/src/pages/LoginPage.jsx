@@ -25,7 +25,7 @@ const LoginPage = () => {
     try {
       const backend_uri = import.meta.env.VITE_URI;
       const response = await axios.post(
-        `${backend_uri}/login`,
+        `${backend_uri}/user/login`,
         credentials,
         { withCredentials: true } // Ensures cookies are sent for session authentication
       );

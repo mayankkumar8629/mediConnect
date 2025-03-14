@@ -1,19 +1,14 @@
-require("dotenv").config();
-const mongoose = require("mongoose");
-const Schema=mongoose.Schema;
-const passport = require("passport");
-const passportLocalMongoose = require("passport-local-mongoose");
+import mongoose from "mongoose";
+import passportLocalMongoose from "passport-local-mongoose";
 
+const { Schema } = mongoose;
 
-
-const userSchema = new mongoose.Schema({
-    
+const userSchema = new Schema({
     name: {
         type: String,
         required: true,
         trim: true
     },
-    
     email: {
         type: String,
         required: true,
@@ -21,26 +16,32 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
         trim: true
     },
-    
     city: {
         type: String,
         required: true,
         trim: true
     },
-    
     mobileNumber: {
         type: String,
         required: true,
         unique: true,
         trim: true
     },
-    
+    orders:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:"Order"
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now
     }
-
 });
+
+// Add passport-local-mongoose plugin for authentication
 userSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 
-module.exports = mongoose.model('User', userSchema);
+// Export User model
+const User = mongoose.model("User", userSchema);
+export default User;

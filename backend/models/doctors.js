@@ -1,31 +1,34 @@
-const mongoose=require("mongoose");
+import mongoose from "mongoose";
 
-const doctorSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+const { Schema, model } = mongoose;
+
+const doctorSchema = new Schema({
+    name: {
+        type: String,
+        required: true
     },
-    specialization:{
-        type:String,
-        required:true
+    specialization: {
+        type: String,
+        required: true
     },
-    contactNumber:{
-        type:Number,
-        required:true
+    contactNumber: {
+        type: Number,
+        required: true
     },
-    experience:{
-        type:Number,
-        required:true
+    experience: {
+        type: Number,
+        required: true
     },
-    availableTimings:{
-        type:String,
-        required:true
+    availableTimings: {
+        type: String,
+        required: true
     },
-    hospitalID:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Hospital"
-        
+    hospitalID: [{
+        type: Schema.Types.ObjectId,
+        ref: "Hospital"
     }]
 });
-const Doctors=mongoose.model("Doctors",doctorSchema);
-module.exports=Doctors;
+
+// Export Doctor model
+const Doctors = model("Doctors", doctorSchema);
+export default Doctors;

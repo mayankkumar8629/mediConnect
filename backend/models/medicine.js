@@ -1,4 +1,5 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+const { Schema, model } = mongoose;
 
 const medicineSchema=new mongoose.Schema({
     name:{
@@ -28,7 +29,7 @@ const medicineSchema=new mongoose.Schema({
     },
     pharmacies:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"Pharmacy",
+        ref:"Pharmacy"
     }],
     createdAt:{
         type:Date,
@@ -36,5 +37,5 @@ const medicineSchema=new mongoose.Schema({
     }
 });
 
-const Medicine=mongoose.model("Medicine",medicineSchema);
-module.exports=Medicine;
+const Medicine=model("Medicine",medicineSchema);
+export default Medicine;

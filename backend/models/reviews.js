@@ -1,31 +1,34 @@
-const mongoose=require("mongoose");
+import mongoose from "mongoose";
 
-const reviewSchema = new mongoose.Schema({
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User",
-        required:true
-    },
-    hospital:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Hospital",
+const { Schema, model } = mongoose;
+
+const reviewSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true
     },
-    rating:{
-        type:Number,
-        required:true,
-        min:1,
-        max:5
+    hospital: {
+        type: Schema.Types.ObjectId,
+        ref: "Hospital",
+        required: true
     },
-    comment:{
-        type:String,
-        trim:true
+    rating: {
+        type: Number,
+        required: true,
+        min: 1,
+        max: 5
     },
-    createdAt:{
-        type:Date,
-        default:Date.now
+    comment: {
+        type: String,
+        trim: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
-
 });
-const Review=mongoose.model("Review",reviewSchema);
-module.exports=Review;
+
+// Export Review model
+const Review = model("Review", reviewSchema);
+export default Review;
