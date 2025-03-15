@@ -15,6 +15,16 @@ export const getAllPharmacy = async (req,res)=>{
         res.status(500).json({message:"Error fetching pharmacies",error});
     }
 }
+//get all medicine data
+export const getAllMedicine = async(req,res)=>{
+  try {
+    const medicines = await Medicine.find({});
+    res.status(200).json({ message: "Medicines fetched successfully", medicines });
+  } catch (error) {
+    console.error("Error fetching medicines:", error);
+    res.status(500).json({ message: "Error fetching medicines", error });
+  }
+}
 //get pharmacy with the given medicien data
 export const checkMedicineAvailability = async (req, res) => {
     try {

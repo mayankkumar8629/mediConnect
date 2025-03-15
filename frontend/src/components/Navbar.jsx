@@ -54,6 +54,10 @@ const Navbar = () => {
                 >
                   Add Hospital
                 </Button>
+                {/* New Pharmacy Route Button */}
+                <Button onClick={() => navigate("/pharmacy")} sx={navButtonStyle}>
+                  Pharmacy
+                </Button>
                 <Button onClick={() => navigate("/contact")} sx={navButtonStyle}>Contact</Button>
                 <Button 
                   onClick={handleLogout} 

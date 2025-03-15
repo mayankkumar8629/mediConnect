@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import HospitalDetails from "./pages/HospitalDetails";
+import PharmacyList from "./pages/PharmacyList"; // Added PharmacyList import
 import Navbar from "./components/Navbar";
 import EditHospital from "./pages/EditHospitalForm";
 import AddHospital from "./pages/AddHospital";
@@ -53,6 +54,15 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          {/* New Pharmacy Route */}
+          <Route
+            path="/pharmacy"
+            element={
+              <ProtectedRoute>
+                <PharmacyList />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
@@ -60,3 +70,4 @@ const App = () => {
 };
 
 export default App;
+
