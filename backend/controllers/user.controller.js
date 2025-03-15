@@ -23,7 +23,7 @@ export const signup = async (req, res, next) => {
 
 // Login Controller
 export const login = (req, res, next) => {
-  console.log("Request Body:", req.body);
+  
 
   passport.authenticate("local", (err, user, info) => {
     if (err) return next(err);

@@ -20,6 +20,7 @@ import Medicine from "./models/medicine.js";
 import userRoute from "./routes/user.route.js";
 import hospitalRoute from "./routes/hospital.route.js";
 import pharmacyRoute from "./routes/pharmacy.route.js";
+import blogRoute from "./routes/blog.route.js";
 
 // Initialize Express app
 const app = express();
@@ -78,6 +79,7 @@ mongoose
 app.use("/user",userRoute);
 app.use("/hospital",hospitalRoute);
 app.use("/pharmacy",pharmacyRoute);
+app.use("/blog",blogRoute);
 
 
 // Start Server
