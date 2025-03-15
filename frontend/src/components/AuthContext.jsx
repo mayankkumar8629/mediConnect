@@ -18,8 +18,8 @@ const AuthProvider = ({ children }) => {
     try {
       // Call the backend logout endpoint
       const backend_uri = import.meta.env.VITE_URI;
-      const response = await axios.post(
-        `${backend_uri}/logout`,
+      const response = await axios.get(
+        `${backend_uri}/user/logout`,
         {},
         { withCredentials: true }
       );

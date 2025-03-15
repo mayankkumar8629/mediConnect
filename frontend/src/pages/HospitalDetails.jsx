@@ -12,7 +12,7 @@ const HospitalPage = () => {
 
   useEffect(() => {
     axios
-      .get(`${backend_uri}/hospitals/${id}`)
+      .get(`${backend_uri}/hospital/get/${id}`)
       .then((response) => setHospital(response.data))
       .catch((error) => console.error("Error fetching hospital:", error));
   }, [id]);
@@ -20,7 +20,7 @@ const HospitalPage = () => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this hospital?")) return;
     try {
-      await axios.delete(`${backend_uri}/hospitals/${id}`);
+      await axios.delete(`${backend_uri}/hospital/delete/${id}`);
       alert("Hospital deleted successfully!");
       navigate("/");
     } catch (error) {

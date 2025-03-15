@@ -8,7 +8,7 @@ const Home = () => {
   const backend_uri = import.meta.env.VITE_URI;
   useEffect(() => {
     axios
-      .get(`${backend_uri}/hospitals`) // Ensure this API is running
+      .get(`${backend_uri}/hospital/get`) // Ensure this API is running
       .then((response) => setHospitals(response.data))
       .catch((error) => console.error("Error fetching hospitals:", error));
   }, []);

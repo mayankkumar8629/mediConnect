@@ -20,7 +20,7 @@ const SignupPage = () => {
     e.preventDefault();
     try {
       const backend_uri = import.meta.env.VITE_URI;
-      const response = await fetch(`${backend_uri}/signup`, {
+      const response = await fetch(`${backend_uri}/user/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userDetails),

@@ -20,7 +20,7 @@ const EditHospitalForm = () => {
 
   useEffect(() => {
     axios
-      .get(`${backend_uri}/hospitals/${id}`)
+      .get(`${backend_uri}/hospital/get/${id}`)
       .then((response) => {
         const data = response.data;
         setHospital({
@@ -46,7 +46,7 @@ const EditHospitalForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${backend_uri}/hospitals/${id}`, {
+      await axios.put(`${backend_uri}/hospital/update/${id}`, {
         ...hospital,
         specialties: hospital.specialties.split(",").map((s) => s.trim()), // Convert back to array
       });

@@ -36,7 +36,7 @@ const AddHospital = () => {
     console.log("Payload to be sent:", payload);
 
     try {
-      const response = await axios.post(`${backend_uri}/newhospital`, payload);
+      const response = await axios.post(`${backend_uri}/hospital/newhospital`, payload);
 
       if (response.status === 201) {
         alert("Hospital added successfully!");
