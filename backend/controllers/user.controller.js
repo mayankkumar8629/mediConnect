@@ -1,5 +1,6 @@
 import passport from "passport";
 import User from "../models/user.js"; // Adjust the path as needed
+import { response } from "express";
 
 // Signup Controller
 export const signup = async (req, res, next) => {
@@ -49,3 +50,29 @@ export const logout = (req, res, next) => {
       res.status(200).json({ message: "Logout successful" });
   });
 };
+//user details
+export const getUserDetails = async(req,res)=>{
+  if(!req.user){
+    return res.status(500).json({message:"User not authenticated"});
+  }
+  const userId=req.user._id;
+  try{
+    const userDetails=await User.findById(userId).populate("orders");
+    res.status(201).json(userDetails);
+  }catch(error){
+    console.error("Error fetching user details",error);
+    res.status(500).json({message:"Erro fetching user detail"});
+  }
+
+
+}
+export const updateUserDetails = async(req,res)=>{
+  if(!req.user){
+    return res.status(500).jsonn({messge:"User not authenticated"});
+  }
+  const userId=req.user._id;
+  const {}
+  try{
+    
+  }
+}
