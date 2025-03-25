@@ -11,11 +11,18 @@ const router = express.Router();
 router.use("/user", async (req, res) => {
   try {
     const url = `${process.env.USER_SERVICE_URL}${req.originalUrl.replace("/user", "")}`;
+    console.log(url);
     const response = await axios({
       method: req.method,
       url,
       data: req.body,
-      params: req.query
+      params: req.query,
+      headers: {
+        // Forward the Authorization header from the incoming request
+        Authorization: req.headers.authorization,
+        // Optionally, forward other headers as needed (e.g., Content-Type)
+        'Content-Type': req.headers['content-type']
+      }
     });
     res.status(response.status).json(response.data);
   } catch (error) {

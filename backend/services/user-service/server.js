@@ -14,10 +14,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 import userAuthRoutes from "./routes/authRoutes.js";
+import blogUserRoute from "./routes/blogUserRoute.js";
 
 
 
 app.use("/user",userAuthRoutes);
+app.use("/api/blog",blogUserRoute);
 
 app.listen(PORT,()=>{
     console.log(`User service running on port ${PORT}`);
