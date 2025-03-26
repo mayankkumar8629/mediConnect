@@ -71,7 +71,7 @@ export const addNewComment=async (req,res)=>{
     if(!req.user){
         return res.status(401).json({message:"User not authenticated"});
     }
-    const userId=req.user._id;
+    const userId=req.user.id;
     const {blogId}=req.params;
     const {body}=req.body;
 

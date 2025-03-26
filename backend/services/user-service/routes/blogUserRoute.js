@@ -7,6 +7,6 @@ const router=express.Router();
 router.post("/newBlog",authenticateToken,addNewBlog);
 router.get("/allBlog",getAllBlog);
 router.get("/allBlog/:blogId",getAllComments);
-router.post("/allBlog/:blogId/newComment",addNewComment);
+router.post("/allBlog/:blogId/newComment",authenticateToken,addNewComment);
 
 export default router;

@@ -15,11 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 
 import userAuthRoutes from "./routes/authRoutes.js";
 import blogUserRoute from "./routes/blogUserRoute.js";
+import hospitalUserRoute from "./routes/hospitalUserRoute.js";
 
 
 
 app.use("/user",userAuthRoutes);
 app.use("/api/blog",blogUserRoute);
+app.use("/api/hospital",hospitalUserRoute);
 
 app.listen(PORT,()=>{
     console.log(`User service running on port ${PORT}`);
