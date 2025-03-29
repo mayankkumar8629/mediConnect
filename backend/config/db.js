@@ -12,8 +12,7 @@ const MONGO_URL = process.env.MONGO_URL ;
 mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // Optionally disable buffering to get immediate errors:
-  // bufferCommands: false,
+ 
 })
   .then(() => console.log(`✅ MongoDB Connected`))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));

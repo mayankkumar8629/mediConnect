@@ -8,7 +8,7 @@ const medData=require("./medData.js");
 const Pharmacy=require("../models/pharmacy.js");
 const pharmData=require("./pharmData.js");
 
-const MONGO_URL ="mongodb+srv://mayankkumarverma306:14102003@cluster0.vzu4s.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
 
 main()
   .then(() => console.log("✅ Connected to MongoDB"))
