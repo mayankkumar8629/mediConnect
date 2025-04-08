@@ -1,4 +1,4 @@
-import mongoose from "../config/db.js";
+import mongoose from "mongoose";
 const {Schema}=mongoose;
 
 const appointmentSchema=new Schema({

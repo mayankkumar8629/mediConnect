@@ -1,5 +1,5 @@
-import mongoose from "../config/db.js";
-const {Schema}=mongoose;
+import mongoose from "mongoose";
+const {Schema,model}=mongoose;
 
 const patientSchema=new Schema({
     name:{

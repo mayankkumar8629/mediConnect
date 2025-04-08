@@ -1,14 +1,13 @@
 import express from "express";
-import {configDotenv} from "dotenv";
+import dotenv from "dotenv";
+dotenv.config({path:"../../.env"});
 
-import User from '../../models/user.js'
-import mongoose from "../../config/db.js";
-configDotenv({path:"../../.env"});
+import connectDB from "../../config/db.js";
+connectDB();
 
 const app=express();
 
 const PORT = process.env.USER_SERVICE_PORT ;
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +16,8 @@ import userAuthRoutes from "./routes/authRoutes.js";
 import blogUserRoute from "./routes/blogUserRoute.js";
 import hospitalUserRoute from "./routes/hospitalUserRoute.js";
 import pharmacyUserRoute from "./routes/pharmacyUserRoute.js";
+
+
 
 
 

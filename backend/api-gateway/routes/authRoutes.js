@@ -4,7 +4,6 @@ import axios from "axios";
 import User from "../../models/user.js";
 import Admin from "../../models/admin.js";
 import HospitalAdmin from "../../models/hospitalAdmin.js";
-import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
 const router=express.Router();
 
@@ -20,13 +19,15 @@ router.post("/login",async (req,res)=>{
     
     try{
         const {email,password,role}=req.body;
+        
 
         let user=null;
-        console.log(email);
+        
         if(role=="user"){
-            console.log("req1");
+            
             user = await User.findOne({email});
-            console.log("req2");
+            
+            
         }else if(role=="hospital-admin"){
             user=await HospitalAdmin.findOne({email});
         }else if(role=="admin"){
@@ -39,8 +40,12 @@ router.post("/login",async (req,res)=>{
             return res.status(400).json({message:"Invalid credentials"});
         }
         //verify the password
+        
         const hasshedPassword = await user.password;
+        
+        console.log(hasshedPassword);
         const isMatch = await bcrypt.compare(password, hasshedPassword);
+        console.log(isMatch);
         if(!isMatch){
             return res.status(400).json({message:"Invalid credentials"});
         }
