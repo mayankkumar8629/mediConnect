@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const {Schema}=mongoose;
+const {Schema,model}=mongoose;
 
 const appointmentSchema=new Schema({
     name:{
@@ -68,6 +68,6 @@ const appointmentSchema=new Schema({
 
 
 })
-const Appointment = mongoose.model("appointmentSchema",Appointment);
+const Appointment = mongoose.model("Appointment",appointmentSchema);
 export default Appointment;
 

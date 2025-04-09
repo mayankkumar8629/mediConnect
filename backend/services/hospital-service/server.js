@@ -13,10 +13,12 @@ app.use(express.urlencoded({ extended: true }));
 
 import authRoute from "./routes/authRoute.js";
 import patientRoute from "./routes/patientRoute.js";
+import appointmentRoute from "./routes/appointmentRoute.js";
 
 //authentication route
 app.use("/hospital",authRoute);
 app.use("/api/patient",patientRoute);
+app.use("/api/appointment",appointmentRoute);
 
 app.listen(PORT,()=>{
     console.log(`HospitalAdmin is listening on Port ${PORT}`);
