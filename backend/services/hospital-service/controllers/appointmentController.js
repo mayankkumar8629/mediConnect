@@ -6,6 +6,7 @@ import Doctor from "../../../models/doctors.js";
 
 export const addNewAppointment = async(req,res)=>{
     try{
+        
         if(!req.user){
             return res.status(401).json({message:"Access denied"});
         }
@@ -73,6 +74,7 @@ export const getAllAppointment = async(req,res)=>{
 export const actionOnAppointment = async(req,res)=>{
     
     try{
+       
         const {status,assignedDoctor,appointmentDate,rejectionReason}=req.body;
         const hospitalAdmin=await HospitalAdmin.findById(req.user.id);
         const currentHospital=await Hospital.findOne({hospitalCode:hospitalAdmin.hospitalId});
@@ -111,5 +113,18 @@ export const actionOnAppointment = async(req,res)=>{
     }catch(error){
         console.log(error.message);
         return res.status(500).json({message:"Error updating the message"});
+    }
+}
+
+export const getAppointmentById = async(req,res)=>{
+    try{
+        const appointment=await Appointment.findById(req.params.appointmentId);
+        if(!appointment){
+            return res.status(400).json({message:"Appointment not found"});
+        }
+        return res.status(200).json(appointment);
+    }catch(error){
+        console.log(error.message);
+        return res.status(500).json({message:"Error finding the appointment"});
     }
 }
