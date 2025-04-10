@@ -2,6 +2,7 @@ import HospitalAdmin from "../../../models/hospitalAdmin.js";
 import Hospital from "../../../models/hospital.js";
 import Appointment from "../../../models/appointment.js";
 import User from "../../../models/user.js";
+import Doctor from "../../../models/doctors.js";
 
 export const addNewAppointment = async(req,res)=>{
     try{
@@ -69,15 +70,46 @@ export const getAllAppointment = async(req,res)=>{
 
 };
 
-// export const actionOnAppointment = async(req,res)=>{
-//     try{
-//         const currentAppointment= await Appointment.findById(req.params.id);
-//         if(!currentAppointment){
-//             return res.status(400).json({message:"Appointment not found"});
-//         }
-//         const hospitalAdmin = await HospitalAdmin.findById(req.user.id);
-//         const currentHospital= await Hospital.findOne({hospitalCode:hospitalAdmin.hospitalId});
-        
-        
-//     }
-// }
+export const actionOnAppointment = async(req,res)=>{
+    
+    try{
+        const {status,assignedDoctor,appointmentDate,rejectionReason}=req.body;
+        const hospitalAdmin=await HospitalAdmin.findById(req.user.id);
+        const currentHospital=await Hospital.findOne({hospitalCode:hospitalAdmin.hospitalId});
+        console.log(currentHospital._id);
+    
+
+        const updatedDetails={status};
+        if(status=="rejected"){
+            updatedDetails.rejectionReason=rejectionReason;
+            updatedDetails.assignedDoctor=null;
+            updatedDetails.appointmentDate=null;
+        }else if(status=="approved"){
+            const doctor=await Doctor.findOne({
+                name:assignedDoctor,
+                hospitalID:currentHospital._id
+            });
+            console.log(doctor);
+            if(!doctor){
+                return res.status(400).json({message:"Doctor not found"});
+            }
+            updatedDetails.assignedDoctor=doctor._id;
+            updatedDetails.appointmentDate=appointmentDate;
+            updatedDetails.rejectionReason=null;
+        }
+        console.log(updatedDetails);
+        const updatedAppointment = await Appointment.findByIdAndUpdate(
+            req.params.appointmentId,
+            {$set:updatedDetails},
+            {new:true}
+        );
+        console.log(updatedAppointment);
+        return res.status(200).json({
+            message:"Appointment action completed",
+            updatedAppointment:updatedAppointment
+        });
+    }catch(error){
+        console.log(error.message);
+        return res.status(500).json({message:"Error updating the message"});
+    }
+}
