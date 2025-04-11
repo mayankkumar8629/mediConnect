@@ -15,12 +15,15 @@ import authRoute from "./routes/authRoute.js";
 import patientRoute from "./routes/patientRoute.js";
 import appointmentRoute from "./routes/appointmentRoute.js";
 import transactionRoute from "./routes/transactionRoute.js";
+import inventoryRoute from "./routes/inventoryRoute.js";
 
 //authentication route
 app.use("/hospital",authRoute);
 app.use("/api/patient",patientRoute);
 app.use("/api/appointment",appointmentRoute);
 app.use("/api/transaction",transactionRoute);
+app.use("/api/invetory",inventoryRoute);
+
 
 app.listen(PORT,()=>{
     console.log(`HospitalAdmin is listening on Port ${PORT}`);

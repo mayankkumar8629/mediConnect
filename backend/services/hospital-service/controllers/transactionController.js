@@ -34,5 +34,3 @@ export const getAllTransaction = async(req,res)=>{
     }
 }
 
-
-///creating a new transaction
