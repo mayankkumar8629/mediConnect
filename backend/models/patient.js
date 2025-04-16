@@ -75,5 +75,5 @@ const patientSchema=new Schema({
     }
 })
 
-const Patient=model("Patient",patientSchema);
+const Patient=mongoose.model("Patient",patientSchema);
 export default Patient;

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const { Schema, model } = mongoose;
+const {Schema,model}=mongoose;
 
 const doctorSchema = new Schema({
     name: {
@@ -30,5 +30,5 @@ const doctorSchema = new Schema({
 });
 
 // Export Doctor model
-const Doctors = model("Doctors", doctorSchema);
+const Doctors = mongoose.model("Doctors", doctorSchema);
 export default Doctors;

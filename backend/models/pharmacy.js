@@ -44,5 +44,5 @@ const pharmacySchema = new Schema({
 });
 
 // Export Pharmacy model
-const Pharmacy = model("Pharmacy", pharmacySchema);
+const Pharmacy = mongoose.model("Pharmacy", pharmacySchema);
 export default Pharmacy;

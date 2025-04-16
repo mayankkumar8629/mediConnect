@@ -19,5 +19,5 @@ const commentSchema=new Schema({
         default:Date.now
     }
 })
-const Comment=model("Comment",commentSchema);
+const Comment=mongoose.model("Comment",commentSchema);
 export default Comment;

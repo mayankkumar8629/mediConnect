@@ -30,5 +30,5 @@ const reviewSchema = new Schema({
 });
 
 // Export Review model
-const Review = model("Review", reviewSchema);
+const Review =mongoose.model("Review", reviewSchema);
 export default Review;

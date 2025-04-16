@@ -70,6 +70,7 @@ router.use("/hospital", async (req, res) => {
 router.use("/admin", async (req, res) => {
   try {
     const url = `${process.env.ADMIN_SERVICE_URL}${req.originalUrl.replace("/admin", "")}`;
+    console.log(url);
     const response = await axios({
       method: req.method,
       url,

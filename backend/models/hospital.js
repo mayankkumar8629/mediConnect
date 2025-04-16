@@ -80,5 +80,5 @@ const hospitalSchema = new Schema({
 });
 
 // Export Hospital model
-const Hospital = model("Hospital", hospitalSchema);
+const Hospital =mongoose.model("Hospital", hospitalSchema);
 export default Hospital;

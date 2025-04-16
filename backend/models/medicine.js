@@ -37,5 +37,5 @@ const medicineSchema=new mongoose.Schema({
     }
 });
 
-const Medicine=model("Medicine",medicineSchema);
+const Medicine=mongoose.model("Medicine",medicineSchema);
 export default Medicine;

@@ -33,5 +33,5 @@ const blogSchema=new Schema(
     }
 )
 
-const Blog=model("Blog",blogSchema);
+const Blog=mongoose.model("Blog",blogSchema);
 export default Blog;

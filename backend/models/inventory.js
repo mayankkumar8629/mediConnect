@@ -44,5 +44,5 @@ const inventorySchema= new Schema({
     }
 })
 
-const Inventory=mongoose.model("inventorySchema",Inventory);
+const Inventory=mongoose.model("Inventory",inventorySchema);
 export default Inventory;
