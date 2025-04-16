@@ -20,6 +20,44 @@ export const getAllHospitals = async(req,res)=>{
     }
 }
 
+export const createNewHospital = async(req,res)=>{
+
+    try{
+        console.log(req.body);
+        const {hospitalCode,name,address,description,contactNumber,capacity,specialties,imageUrl}=req.body;
+
+        console.log("Hii");
+        if(!hospitalCode || !name || !address|| !contactNumber || !capacity || !specialties ){
+            return res.status(404).json({message:"Fields cannot be left blank"});
+        }
+        console.log("hss");
+        const existingHospital = await Hospital.findOne({hospitalCode:hospitalCode});
+        if(existingHospital){
+            return res.status(400).json({messsage:"Hospital already exists with the given code"});
+        }
+        console.log("hospital");
+        const newHospital = new Hospital({
+            hospitalCode,
+            name,
+            address,
+            description,
+            contactNumber,
+            capacity,
+            specialties,
+            imageUrl
+        
+        });
+        await newHospital.save();
+        return res.status(201).json({
+            message:"hospital created successfully",
+            newHospital
+        });
+    }catch(error){
+        console.error("Error creating new hospital",error);
+        return res.status(500).json({message:"Error creating new hospital",error});
+    }
+}
+
 export const getHospitalById = async (req, res) => {
     try {
         console.log("reqComming");
