@@ -15,9 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 
 import authRouteAdmin from "./routes/authRouteAdmin.js";
 import hospitalRoute from "./routes/hospitalRoute.js";
+import pharmacyRoute from "./routes/pharmacyRoute.js";
 
 app.use("/admin",authRouteAdmin);
 app.use("/api/hospital",hospitalRoute);
+app.use("/api/pharmacy",pharmacyRoute)
 
 app.listen(PORT,()=>{
     console.log(`Admin is listening on Port ${PORT}`);
