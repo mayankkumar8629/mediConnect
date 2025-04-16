@@ -48,6 +48,24 @@ A microservices-based platform connecting patients, hospitals, and pharmacies wi
 | Database          | MongoDB (Mongoose)       |
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ┌───────────────────┐
 │      Client       │
 │     (React)       │
@@ -73,6 +91,27 @@ A microservices-based platform connecting patients, hospitals, and pharmacies wi
       │     SINGLE MONGODB      │
       │                         │
       └─────────────────────────┘
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
